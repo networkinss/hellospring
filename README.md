@@ -96,4 +96,15 @@ but still retains the flexibility and robustness of Spring.
 It has become a vital tool for Java developers worldwide, streamlining the process of creating high-quality, resilient, 
 and scalable applications for various industry needs.
 
+## Swagger / OpenAPI documentation for REST APIs in Spring Boot
+
+You need to add a dependency to your pom.xml file to use Swagger in your Spring Boot project.
+```xml  
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    <version>2.1.0</version>
+</dependency>
+```
+After that, you have a new auto-generated Swagger UI at http://localhost:8080/swagger-ui/index.html
 
