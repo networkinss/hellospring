@@ -5,20 +5,44 @@
 </head>
 <body>
 <h1>Login</h1>
-<form method="POST" action="/login">
+<!DOCTYPE html>
+<html>
+<body>
+<form id="weatherForm" method="GET" action="http://localhost:8080/weather">
     <table>
         <tr>
-            <td>User:</td>
-            <td><input type="text" name="username" /></td>
+            <td>Latitude:</td>
+            <td><input type="text" id="lat" name="lat" /></td>
         </tr>
         <tr>
-            <td>Password:</td>
-            <td><input type="password" name="password" /></td>
+            <td>Longitude:</td>
+            <td><input type="text" id="lon" name="lon" /></td>
         </tr>
         <tr>
-            <td colspan="2"><input name="submit" type="submit" value="Submit" /></td>
+            <td colspan="2"><input id="submit" name="submit" type="submit" value="Submit" /></td>
         </tr>
     </table>
 </form>
+
+<div id="result"></div>
+
+<script>
+    document.getElementById('weatherForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var lat = document.getElementById('lat').value;
+        var lon = document.getElementById('lon').value;
+        fetch('http://localhost:8080/weather?lat=' + lat + '&lon=' + lon)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = JSON.stringify(data);
+            })
+            .catch(err => console.error(err));
+    });
+</script>
+</body>
+</html>
+
+
+
 </body>
 </html>
